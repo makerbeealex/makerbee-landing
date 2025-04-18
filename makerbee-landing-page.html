@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makerbee | E-Commerce for Makers by Makers</title>
+    <style>
+        :root {
+            --primary: #5E489B;
+            --primary-dark: #41326c;
+            --secondary: #8b5cf6;
+            --dark: #364F6A;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, "DejaVu Sans", Roboto, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            font-weight: 600;
+            transition: color 0.2s;
+            font-size: 1.1rem;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            background-color: #fde89c;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .hero-buttons .secondary-button {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        
+        .hero-buttons .secondary-button:hover {
+            background-color: #f9f9ff;
+        }
+        
+        .hero-buttons .primary-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        
+        .hero-buttons .primary-button:hover {
+            background-color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background-color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .feature-card {
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 0.5rem;
+            background-color: #e0e7ff;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 0;
+            background-color: #f9fafb;
+        }
+        
+        .pricing-container {
+            display: grid;
+            grid-template-columns: 50%;
+            row-gap: 2rem;
+            column-gap: 0;
+            /*gap: 2rem;*/
+            margin-top: 3rem;
+            align-content: center;
+            justify-content: space-around;
+        }
+        
+        .pricing-plan {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .popular-plan {
+            border: 2px solid var(--primary);
+            position: relative;
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        .popular-plan:hover {
+            transform: translateY(-15px) scale(1.02);
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+        }
+        
+        .plan-header {
+            margin-bottom: 1rem;
+        }
+        
+        .plan-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .plan-price span {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        .plan-description {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            margin-right: 0rem;
+            margin-left: 0rem;
+            flex-grow: 1;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li::before {
+            content: "✓";
+            margin-right: 0.75rem;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .plan-cta {
+            display: inline-block;
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+        
+        .primary-cta {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .primary-cta:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .secondary-cta {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .secondary-cta:hover {
+            background-color: #f9f9ff;
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo-icon {
+            margin-right: 0.5rem;
+        }
+        
+        .footer-text {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #9ca3af;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #9ca3af;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+        }
+        
+        /* Responsive */
+        @media (min-width: 375px) and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.125rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pricing-container {
+                grid-template-columns: 100%;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .popular-plan {
+                transform: none;
+            }
+            
+            .popular-plan:hover {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="https://laeeqkdqrkjtjnltmgym.supabase.co/storage/v1/object/public/photos//Makerbee%20Header%20Logo%20clear%20background.png" alt="Makerbee Logo" width="300px">
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>E-commerce Software<br> Built By Makers for Makers</h1>
+            <p>With quick and easy setup, no upfront fees or hidden charges and complete ownership of your data we're the best software to use to sell your handmade goods!</p>
+            <div class="hero-buttons">
+                <a href="https://cdn.forms-content-1.sg-form.com/ba9a96ad-1998-11f0-b63c-e2cd82a3fdb8" target="_blank" class="primary-button">Sign Up Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Sets Us Apart</h2>
+                <p>Our platform is designed to help makers sell their handmade goods to a wide audience without compromising their craft while being easy to use, and free of AI and algorithms.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Keep 100% Of What You Earn!</h3>
+                    <p>We add a 20% service fee to your listed prices — there are no upfront fees or additional charges.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>No Robots Allowed!</h3>
+                    <p>We don't allow AI generated products on our platform and there are no algorithms controlling your customers experience.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">👷</div>
+                    <h3>Support the Maker community!</h3>
+                    <p>A portion of our revenue goes directly to local makerspaces and art studios to help grow our communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>No subscription fees, upfront fees or hidden charges. Just really simple pricing.</p>
+            </div>
+            
+            <div class="pricing-container">
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-plan">
+                    <div class="plan-header">
+                        <div class="plan-name">Our only pricing plan</div>
+                        <div class="plan-price">20%<span> processing fee</span></div>
+                        <div class="plan-description">Paid for by your customers at the time of purchase.</div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>Unlimited product listings</li>
+                        <li>Unlimited product categories</li>
+                        <li>Custom Logo Support</li>
+                        <li>Custom Colors and Fonts</li>
+                        <li>Apple Pay, Google Pay and Credit/Debit Card Support</li>
+                        <li>Charge and Collect Sales Tax</li>
+                        <li>Support for Flat Rate Shipping Charges</li>
+                    </ul>
+                    
+                    <a href="https://cdn.forms-content-1.sg-form.com/ba9a96ad-1998-11f0-b63c-e2cd82a3fdb8" target="_blank" class="plan-cta secondary-cta">Sign Up Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <img src="https://laeeqkdqrkjtjnltmgym.supabase.co/storage/v1/object/public/photos//Makerbee%20Header%20Logo%20Inverted.png" alt="Makerbee Logo" width="300px">
+                    </div>
+                    <p class="footer-text">E-Commerce Software Built By Makers For Makers.</p>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://medium.com/@makerbee" target="_blank">Blog</a></li>
+                        <li><a href="https://bsky.app/profile/makerbee.bsky.social" target="_blank"> Find Us On Bluesky</a></li>
+                        <li><a href="mailto:alex@makerbee.io">Contact</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Makerbee. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
